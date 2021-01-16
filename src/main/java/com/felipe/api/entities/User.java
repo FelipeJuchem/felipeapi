@@ -1,23 +1,33 @@
 package com.felipe.api.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
+
 
 @Entity
+@Table(name = "tb_user")
 public class User  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "phone")
     private String phone;
+
+    @Column(name = "password")
     private String password;
 
+    @OneToMany(mappedBy = "client")
+    private List<Order> orders = new ArrayList<>();
 
     public User() {
     }
@@ -60,6 +70,9 @@ public class User  {
     }
 
     public String getPassword() { return password;
+    }
+
+    public List<Order> getOrders() { return orders;
     }
 
     public void setPassword(String password) {
