@@ -42,8 +42,7 @@ public class Order {
         this.id = id;
     }
 
-    public Instant getMoment() {
-        return moment;
+    public Instant getMoment() { return moment;
     }
 
     public void setMoment(Instant moment) {

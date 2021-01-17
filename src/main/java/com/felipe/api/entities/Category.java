@@ -1,7 +1,9 @@
 package com.felipe.api.entities;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 
 @Entity
@@ -12,6 +14,9 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    @Transient
+    private Set<Product> products = new HashSet<>();
 
     public Category() {
     }
@@ -29,6 +34,10 @@ public class Category {
     }
 
     public String getName() { return name;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
     }
 
     public void setName(String name) {
